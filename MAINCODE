@@ -1,0 +1,44 @@
+package billcalculator;
+
+//Name: Shivam
+//Purpose: To calculate cost
+//Description: GUI that gathers info and displays cost
+
+import java.text.NumberFormat;
+import javax.swing.JOptionPane;
+//importing libraries
+
+public class billcalculator {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+       
+        double burger;
+        double fries;
+        double softDrinks; 
+        double taxPaid; 
+        double totalBeforeTax;
+        double finalTotal;
+        double amountPaid;
+        double change;
+        //declaring doubles
+       NumberFormat decimals = NumberFormat.getInstance ();
+        decimals.setMaximumFractionDigits(2);
+        decimals.setMinimumFractionDigits(2);
+        //limiting decimals
+        JOptionPane.showMessageDialog(null, "In the following windows please enter the amount \n"
+                                          + "                   of each good that was purchased");
+        burger = Double.parseDouble(JOptionPane.showInputDialog(null, "Enter the number of burgers"));
+        fries = Double.parseDouble(JOptionPane.showInputDialog(null, "Enter the number of fries"));
+        softDrinks = Double.parseDouble(JOptionPane.showInputDialog(null, "Enter the number of soft drinks"));
+        amountPaid = Double.parseDouble(JOptionPane.showInputDialog(null, "Enter the tendered amount"));
+        totalBeforeTax = burger * 2.49 + fries * 1.89 + softDrinks * 0.99;
+        taxPaid = totalBeforeTax * 0.13;
+        finalTotal = taxPaid + totalBeforeTax;
+        change = amountPaid - finalTotal;
+        JOptionPane.showMessageDialog(null, "Total before taxes: $" + decimals.format(totalBeforeTax) + "\nHST Paid: $" + decimals.format(taxPaid) +"\nFinal Total: $" +decimals.format(finalTotal) +"\nAmount Tendered: $" + decimals.format(amountPaid) + "\nChange: $" + decimals.format(change));
+    }//showing dialogs with entry boxes, calculate values
+    
+}
